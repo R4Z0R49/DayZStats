@@ -1335,7 +1335,7 @@
 		global $ADODB_COUNTRECS;
 		
 		$savec = $ADODB_COUNTRECS;
-		$ADODB_COUNTRECS = false;
+		$ADODB_COUNTRECS = true;
 			
 
 		if ($secs2cache != 0) $rs = $this->CacheExecute($secs2cache,$sql,$inputarr);

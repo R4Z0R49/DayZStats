@@ -1,7 +1,7 @@
 DayZStats for the DayZ hive
 ==================
 
-DayZAdmin is a DayZ Stats panel
+DayZStats is a DayZ Stats panel
 
 ==================
 Requirements
@@ -22,10 +22,9 @@ Installation
 ==================
 - Rename config.php-dist to config.php.
 - Edit config.php and set to the right values. This is highly important!
-- The default login is: admin/123456
 
 ==================
 Updating
 ==================
-- Check for any new files to run in the sql/updates folder.
+- Replace all the files in your directory
 - Check that your config.php is up to date with the new config.php-dist if it has been edited
