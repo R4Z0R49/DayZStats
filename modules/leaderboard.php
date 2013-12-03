@@ -34,7 +34,8 @@
 			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Humanity</th>
 			<th class="custom-th"><img src="images/icons/statspage/playerdeaths1.png" width="25px" height="25px" class="table-img"></img> Deaths</th>
 			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Points</th>
-<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> distanceFoot</th>
+<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Traveled</th>
+<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Duration</th>
 			</thead>
 		<tbody>
 			<?php
@@ -47,7 +48,7 @@
                         $deaths = $rowl['Generation'] - 1;
 						echo "<tr>
 							  <td>{$rank}</td>
-							  <td><a href=\"admin.php?view=info&show=1&CharacterID={$rowl['CharacterID']}\">{$rowl['playerName']}</a></td>
+							  <td><a href=\"info.php?view=info&show=1&CharacterID={$rowl['CharacterID']}\">{$rowl['playerName']}</a></td>
 							  <td>{$rowl['KillsZ']}</td>
 							  <td>{$rowl['KillsH']}</td>
 							  <td>{$rowl['KillsB']}</td>
@@ -56,6 +57,7 @@
 							  <td>{$deaths}</td>
 							  <td>{$points}</td>
 							  <td>{$row1['distanceFoot']}</td>
+							  <td>{$row1['duration']}</td>
 							  </tr>";
 
 		                $rank++;

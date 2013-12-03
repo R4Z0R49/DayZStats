@@ -1,6 +1,3 @@
-<?php
-if (isset($_SESSION['user_id'])) {
-?>
 <!DOCTYPE html>
 <html lang="EN">
 <head>
@@ -70,7 +67,4 @@ include ('navbar.php');
     if(isset($_GET["view"]) && $_GET["view"] == "table" && isset($_GET["show"]) && $_GET["show"] == 0 && isset($refreshPlayersOnline) && $refreshPlayersOnline >= 15) {
         printf("Refreshing every %d seconds<br>\n", $refreshPlayersOnline);
     }
-}else{
-	header('Location: admin.php');
-}
 ?>
