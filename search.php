@@ -44,16 +44,12 @@ if (isset($_REQUEST['search'])){
 
 	<div class="container custom-container">
 	<div class="content">
-		<div class="gametracker">
-			<a href="http://www.gametracker.com/server_info/<?php echo $serverip?>:<?php echo $serverport?>/" target="_blank"><img src="http://cache.www.gametracker.com/server_info/<?php echo $serverip?>:<?php echo $serverport?>/b_560_95_1.png" border="0" alt=""/></a>
-		</div>	
 		<div class="stats-box">	
 		<div class="stats-box-inner">
 		<?php
 			echo "<center><h1>".$pagetitle."</h1></center>";
 			echo "<br />";
 			if($row) {
-			$id = $row['id'];
 		?>
 		<table border="0" cellpadding="4" cellspacing="0">
 		<td width="26"><img src="images/icons/statspage/alivecharacters1.png" width="36" height="36" /></td>
