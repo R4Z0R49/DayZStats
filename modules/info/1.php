@@ -86,13 +86,17 @@ if (isset($_SESSION['user_id'])) {
 						$binocular[] = '<img style="margin-left: 2px;margin-top: 12px;max-width:76px;max-height:76px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
 						break;
 					case 'rifle':
-						$rifle = '<img style="max-width:220px;max-height:92px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
+                        if($curitem == $InvCarry[0]) {
+						    $carry = '<img style="max-width:220px;max-height:92px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
+                        } else {
+						    $rifle = '<img style="max-width:220px;max-height:92px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
+                        }
 						break;
 					case 'carry':
-                        if($curitem == $weaponinhand) {
-						    $rifle = '<img style="max-width:220px;max-height:92px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
-                        } else {
+                        if($curitem == $InvCarry[0]) {
 						    $carry = '<img style="max-width:220px;max-height:92px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
+                        } else {
+						    $rifle = '<img style="max-width:220px;max-height:92px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.'" alt="'.$curitem.'"/>';
                         }
 						break;
 					case 'pistol':
@@ -120,6 +124,11 @@ if (isset($_SESSION['user_id'])) {
 
 
 ?>	
+
+<body class="stats-bg">
+<div class="container custom-container">
+<div class="content" id="content">
+	
 	<div id="page-heading">
 		<center>
 			<h3><?php echo "<title>".htmlspecialchars($row['playerName'])." - ".$sitename."</title>"; ?></h3>
@@ -140,27 +149,8 @@ if (isset($_SESSION['user_id'])) {
 				<div id="gear_player" style="margin-left: 64px; margin-bottom: 10px;">	
 					<div class="gear_info">
 						<img class="playermodel" src='images/models/<?php echo str_replace('"', '', $model); ?>.png'/>
-						<div id="gps" style="margin-left:120px;margin-top:323px">
-							<div class="gpstext" style="font-size: 22px;width:60px;text-align: left;margin-left:47px;margin-top:13px">
-							<?php
-								echo $MapCoords[0];
-							?>
-							</div>
-							<div class="gpstext" style="font-size: 22px;width:60px;text-align: left;margin-left:47px;margin-top:34px">
-							<?php
-							  	  echo $MapCoords[3];
-							?>
-							</div>
-							<div class="gpstext" style="width:120px;margin-left:13px;margin-top:61px">
-							<?php
-								if ($accesslvls[0][3] != 'false') {
-									echo sprintf("%03d",$MapCoords[1]).sprintf("%03d",$MapCoords[2]);
-								} else {
-									echo '<h4 style="margin-top: 2px">Classified!</h4>';
-								}
-							?>
-							</div>							
-						</div>
+						<div id="small-stats" style="margin-left:-60px;margin-top:450px">
+							
 						<div class="statstext" style="width:180px;margin-left:280px;margin-top:-120px">
 							<?php echo 'Zed kills:&nbsp;'.$row['KillsZ'];?>
 						</div>
@@ -181,6 +171,7 @@ if (isset($_SESSION['user_id'])) {
 						</div>
 						<div class="statstext" style="width:180px;margin-left:280px;margin-top:-30px">
 							<?php echo 'Humanity:&nbsp;'.$row['Humanity'];?>
+						</div>
 						</div>
 					</div>
 					<div class="gear_inventory">
@@ -407,159 +398,6 @@ if (isset($_SESSION['user_id'])) {
 					<!-- Backpack -->
 				</div>			
 			</div>
-	<div id="medical">
-	<table id="medical">
-	<tr>
-		<th class="custom-th">Alive</th>
-		<th class="custom-th">Unconscious</th>
-		<th class="custom-th">Infected</th>
-		<th class="custom-th">Injured</th>
-		<th class="custom-th">Bleeding</th>
-		<th class="custom-th">Blood</th>
-		<th class="custom-th">Leg</th>
-	</tr>
-	<tr>
-		<td><?php echo $row['Alive'] == 1 ? "Yes" : "No"; ?></td>
-		<td><?php echo $Medical[1] ? "Yes" : "No"; if($Medical[10] > 0) { printf(" (%d)", $Medical[10]); } ?></td>
-		<td><?php echo $Medical[2] ? "Yes" : "No"; ?></td>
-		<td><?php echo $Medical[3] ? "Yes" : "No"; ?></td>
-		<td><?php echo $Medical[3] ? "Yes" : "No"; ?></td>
-		<td><?php printf("%d (%d%%)", round($Medical[7]), ($Medical[7]/12000) * 100); ?></td>
-		<td><?php printf("%d%%", ($Medical[9][0]/1)*100); ?></td>
-	</tr>
-	<!-- <tr><td colspan="7">&nbsp;<br><?php print_r_html($Medical); ?></td></tr> -->
-	<tr><td colspan="7">&nbsp;</td></tr>
-	</table>
-	<table>
-	<tr>
-		<th class="custom-th">
-		Options
-		</th>
-		<?php if($map == 'chernarus') {?>
-		<th class="custom-th">
-		Teleport
-		</th>
-		<?php } ?>
-		<th class="custom-th">
-		Skin
-		</th>
-	</tr>
-	<!-- Row 1 -->
-	<tr>
-	<td><a href="admin.php?view=actions&revivePlayer&CharacterID=<?php echo $CharacterID; ?>">Revive Player</a></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=NEAF&CharacterID=<?php echo $CharacterID; ?>">North East Airfield</a></td>
-	<?php } ?>
-	<td><a href="admin.php?view=actions&skin=<?php echo $playerSex == 0 ? "Survivor2_DZ" : "SurvivorW2_DZ"; ?>&CharacterID=<?php echo $CharacterID; ?>">Normal Clothing</a></td>
-	</tr>
-	<!-- Row 2 -->
-	<tr>
-	<td><a href="admin.php?view=actions&healPlayer&CharacterID=<?php echo $CharacterID; ?>">Heal Player</a></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=NWAF&CharacterID=<?php echo $CharacterID; ?>">North West Airfield</a></td>
-	<?php } ?>
-	<td><?php if($playerSex == 0) {?><a href="admin.php?view=actions&skin=Camo1_DZ&CharacterID=<?php echo $CharacterID; ?>">Camo Clothing</a><?php } else {?>Camo Clothing<?php } ?></td>
-	</tr>
-	<!-- Row 3 -->
-	<tr>
-	<td><a href="admin.php?view=actions&killPlayer&CharacterID=<?php echo $CharacterID; ?>">Kill Player</a></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Stary&CharacterID=<?php echo $CharacterID; ?>">Stary Tents</a></td>
-	<?php } ?>
-	<td><?php if($playerSex == 0) {?><a href="admin.php?view=actions&skin=Sniper1_DZ&CharacterID=<?php echo $CharacterID; ?>">Ghillie Suit</a><?php } else {?>Ghillie Suit<?php } ?></td>
-	</tr>
-	<!-- Row 4 -->
-	<tr>
-	<td><a href="admin.php?view=actions&resetHumanity=<?php echo $row['playerUID']; ?>&CharacterID=<?php echo $CharacterID; ?>">Reset Humanity</a></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Chernogorsk&CharacterID=<?php echo $CharacterID; ?>">Chernogorsk</a></td>
-	<?php } ?>
-	<td><?php if($playerSex == 0) {?><a href="admin.php?view=actions&skin=Soldier1_DZ&CharacterID=<?php echo $CharacterID; ?>">Soldier Clothing</a><?php } else {?>Soldier Clothing<?php } ?></td>
-	</tr>
-	<!-- Row 5 -->
-	<tr>
-	<td></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Elektrozavodsk&CharacterID=<?php echo $CharacterID; ?>">Elektrozavodsk</a></td>
-	<?php } ?>
-	<td><a href="admin.php?view=actions&skin=<?php echo $playerSex == 0 ? "Bandit1_DZ" : "BanditW1_DZ"; ?>&CharacterID=<?php echo $CharacterID; ?>">Bandit Skin</a></td>
-	</tr>
-	<!-- Row 6 -->
-	<tr>
-	<td></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Skalisty&CharacterID=<?php echo $CharacterID; ?>">Skalisty Island</a></td>
-	<?php } ?>
-	</tr>
-	<!-- Row 7 -->
-	<tr>
-	<td></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Berezino&CharacterID=<?php echo $CharacterID; ?>">Berezino</a></td>
-	<?php } ?>
-	</tr>
-	<!-- Row 8 -->
-	<tr>
-	<td></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Solnichniy&CharacterID=<?php echo $CharacterID; ?>">Solnichniy</a></td>
-	<?php } ?>
-	</tr>
-	<!-- Row 9 -->
-	<tr>
-	<td></td>
-	<?php if($map == 'chernarus') {?>
-	<td><a href="admin.php?view=actions&teleport=Polana&CharacterID=<?php echo $CharacterID; ?>">Polana</a></td>
-	<?php } ?>
-	</tr>
-	</table>
-	</div>
-<!--  end table-content  -->
-
-<!-- Start inventory management -->
-
-<?php
-$accesslvl = $db->GetOne("SELECT accesslvl FROM users WHERE id = '$user_id'");
-
-?>
-
-<div id="inventoryString">
-	<form method="POST">
-	<h2 class="custom-h2-string">Inventory String</h2>
-		<textarea name="inv">
-<?php
-echo $row['Inventory'];
-?>
-		</textarea><br>
-	<br><input name="submit_inv" class="btn btn-default" type="submit" value="Submit" />
-	</form>
-
-	<form method="POST">
-	<br><h2 class="custom-h2-string">Backpack String</h2>
-		<textarea name="bck">
-<?php 
-echo $row['Backpack'];
-?>
-		</textarea><br>
-	<br><input name="submit_bck" class="btn btn-default" type="submit" value="Submit" />
-	</form>
-<?php
-if ($accesslvls[0][3] != 'false') {
-?>
-	<form method="POST">
-	<br><h2 class="custom-h2-string">Location String</h2>
-		<textarea name="loc">
-<?php echo $row['Worldspace']; ?>
-		</textarea><br>
-	<br><input name="submit_loc" class="btn btn-default" type="submit" value="Submit" />
-	</form>
-<?php
-}
-?>
-</div>
-
-
-<!-- End inventory management -->
 			<?php
 			echo $debug;
 			?>
