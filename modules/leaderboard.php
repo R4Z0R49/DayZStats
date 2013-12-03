@@ -26,16 +26,16 @@
 	<table class="table">
 		<thead>
 			<th class="custom-th"># Rank</th>
-			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img>Name</th>
-			<th class="custom-th"><img src="images/icons/statspage/infectedkilled1.png" width="25px" height="25px" class="table-img"></img> Zombie Kills</th>
-			<th class="custom-th"><img src="images/icons/statspage/murders.png" width="25px" height="25px" class="table-img"></img> Human Kills</th>
-			<th class="custom-th"><img src="images/icons/statspage/banditskilled1.png" width="25px" height="25px" class="table-img"></img> Bandit Kills</th>
-			<th class="custom-th"><img src="images/icons/statspage/infectedheadshots1.png" width="25px" height="25px" class="table-img"></img> Headshots</th>
-			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Humanity</th>
-			<th class="custom-th"><img src="images/icons/statspage/playerdeaths1.png" width="25px" height="25px" class="table-img"></img> Deaths</th>
-			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Travelled</th>
-			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Duration</th>
-			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Points</th>
+			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img><br>Name</th>
+			<th class="custom-th"><img src="images/icons/statspage/infectedkilled1.png" width="25px" height="25px" class="table-img"></img><br> Zombie Kills</th>
+			<th class="custom-th"><img src="images/icons/statspage/murders.png" width="25px" height="25px" class="table-img"></img><br> Human Kills</th>
+			<th class="custom-th"><img src="images/icons/statspage/banditskilled1.png" width="25px" height="25px" class="table-img"></img><br> Bandit Kills</th>
+			<th class="custom-th"><img src="images/icons/statspage/infectedheadshots1.png" width="25px" height="25px" class="table-img"></img><br> Headshots</th>
+			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img><br> Humanity</th>
+			<th class="custom-th"><img src="images/icons/statspage/playerdeaths1.png" width="25px" height="25px" class="table-img"></img><br> Deaths</th>
+			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img><br> Traveled</th>
+			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img><br> Duration</th>
+			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img><br> Points</th>
 			</thead>
 		<tbody>
 			<?php
