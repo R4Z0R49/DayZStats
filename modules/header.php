@@ -48,7 +48,7 @@ if(isset($_GET["view"]) && $_GET["view"] == "table" && isset($_GET["show"]) && $
 <div id="logo-stats-bg">
 	<div id="logo-stats-centerer">
 		<div id="logo-stats-left">
-			<img src="images/DayZAdmin.png" width="250px" height="80px" alt=""></a>
+			<img src="images/logo.png" width="250px" height="80px" alt=""></a>
 		</div>
 		<div id="top-search">
 		<?php

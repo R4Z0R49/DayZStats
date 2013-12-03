@@ -34,7 +34,8 @@
 			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Humanity</th>
 			<th class="custom-th"><img src="images/icons/statspage/playerdeaths1.png" width="25px" height="25px" class="table-img"></img> Deaths</th>
 			<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> Points</th>
-		</thead>
+<th class="custom-th"><img src="images/icons/statspage/totalplayers1.png" width="25px" height="25px" class="table-img"></img> distanceFoot</th>
+			</thead>
 		<tbody>
 			<?php
 		        $result = $db->GetAll($leaderboard_query . " ORDER BY $sortby $sorttype LIMIT $limit");
@@ -44,31 +45,18 @@
                     foreach($result as $rowl) {
 		            	$points = $rowl['KillsZ']+$rowl['KillsB']-$rowl['KillsH']-($rowl['Generation'] - 1);
                         $deaths = $rowl['Generation'] - 1;
-                        if(isset($_SESSION['user_id'])) {
-		                    echo "<tr>
-		                	      <td>{$rank}</td>
-    		                      <td><a href=\"admin.php?view=info&show=1&CharacterID={$rowl['CharacterID']}\">{$rowl['playerName']}</a></td>
-	    	                      <td>{$rowl['KillsZ']}</td>
-		                          <td>{$rowl['KillsH']}</td>
-		                          <td>{$rowl['KillsB']}</td>
-		                          <td>{$rowl['HeadshotsZ']}</td>
-		                          <td>{$rowl['Humanity']}</td>
-		                          <td>{$deaths}</td>
-		                          <td>{$points}</td>
-    		                      </tr>";
-                        } else {
-                            echo "<tr>
-                                  <td>{$rank}</td>
-                                  <td>{$rowl['playerName']}</td>
-                                  <td>{$rowl['KillsZ']}</td>
-                                  <td>{$rowl['KillsH']}</td>
-                                  <td>{$rowl['KillsB']}</td>
-                                  <td>{$rowl['HeadshotsZ']}</td>
-                                  <td>{$rowl['Humanity']}</td>
-                                  <td>{$deaths}</td>
-                                  <td>{$points}</td>
-                                  </tr>";
-                        }
+						echo "<tr>
+							  <td>{$rank}</td>
+							  <td><a href=\"admin.php?view=info&show=1&CharacterID={$rowl['CharacterID']}\">{$rowl['playerName']}</a></td>
+							  <td>{$rowl['KillsZ']}</td>
+							  <td>{$rowl['KillsH']}</td>
+							  <td>{$rowl['KillsB']}</td>
+							  <td>{$rowl['HeadshotsZ']}</td>
+							  <td>{$rowl['Humanity']}</td>
+							  <td>{$deaths}</td>
+							  <td>{$points}</td>
+							  <td>{$row1['distanceFoot']}</td>
+							  </tr>";
 
 		                $rank++;
 		            }

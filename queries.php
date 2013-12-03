@@ -520,7 +520,8 @@ SELECT
 	cd.KillsB,
 	cd.KillsH,
 	cd.HeadshotsZ,
-	cd.Humanity
+	cd.Humanity,
+	cd.distanceFoot
 FROM
 	Character_DATA cd
 LEFT JOIN
