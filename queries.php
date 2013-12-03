@@ -45,15 +45,6 @@ AND
 	playerUID = ?
 ";
 
-$leaderboard_deaths = "
-SELECT 
-	* 
-FROM 
-	Character_DEAD 
-WHERE 
-	playerUID = ?
-";
-
 // Search
 $search_query_player = "
 SELECT
@@ -71,5 +62,40 @@ WHERE
 AND
     pd.playerName LIKE ?
 ";
+
+//Info	
+$info1 = array("
+SELECT 
+	Player_DATA.playerName as name,
+	Player_DATA.playerUID as uid,
+	Character_DATA.playerUID as unique_id,
+	Character_DATA.Worldspace as worldspace,
+	Character_DATA.Inventory as inventory,
+	Character_DATA.Backpack as backpack,
+	Character_DATA.Model as model,
+	Character_DATA.Alive,
+	Character_DATA.Medical as medical,
+	Character_DATA.distanceFoot as DistanceFoot,
+	Character_DATA.duration as survival_time,
+	Character_DATA.last_updated as last_updated,
+	Character_DATA.KillsZ as zombie_kills,
+	Character_DATA.KillsZ as total_zombie_kills,
+	Character_DATA.HeadshotsZ as headshots,
+	Character_DATA.HeadshotsZ as total_headshots,
+	Character_DATA.KillsH as survivor_kills,
+	Character_DATA.KillsH as total_survivor_kills,
+	Character_DATA.KillsB as bandit_kills,
+	Character_DATA.KillsB as total_bandit_kills,
+	Character_DATA.Generation as survival_attempts,
+	Character_DATA.duration as survival_time,
+	Character_DATA.distanceFoot as distance,
+	Character_DATA.Humanity as humanity
+FROM
+	Player_DATA, 
+	Character_DATA 
+WHERE
+	Character_DATA.playerUID = Player_DATA.playerUID
+AND
+	Character_DATA.Alive = '1' and Player_DATA.PlayerUID like ?", array($_GET["id"])); 
 
 ?>

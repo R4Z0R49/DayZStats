@@ -51,12 +51,11 @@
 							$distanceFoot = $row2['distanceFoot'];
 							$duration = $row2['duration'];
 						}
-					    $deaths_query = $db->Execute($leaderboard_deaths, array($playerUID));
-						$deaths = $deaths_query->RecordCount();
+						$deaths = $rowl['Generation'] - 1;
 		            	$points = $rowl['KillsZ']+$rowl['KillsB']-$rowl['KillsH']-($rowl['Generation']-($deaths) - 1);
 						echo "<tr>
 							  <td>{$rank}</td>
-							  <td>{$rowl['playerName']}</td>
+							  <td><a href=\"info.php?view=info&show=1&CharacterID={$rowl['CharacterID']}\">{$rowl['playerName']}</a></td>
 							  <td>{$rowl['KillsZ']}</td>
 							  <td>{$rowl['KillsH']}</td>
 							  <td>{$rowl['KillsB']}</td>
