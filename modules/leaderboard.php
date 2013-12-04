@@ -44,13 +44,6 @@
 				
 		        if (sizeof($result) != 0) {
                     foreach($result as $rowl) {					
-						$playerUID = $rowl['playerUID'];
-
-						$result2 = $db->GetAll($leaderboard_query_dead, array($playerUID));
-						foreach($result2 as $row2){
-							$distanceFoot = $row2['distanceFoot'];
-							$duration = $row2['duration'];
-						}
 						$deaths = $rowl['Generation'] - 1;
 		            	$points = $rowl['KillsZ']+$rowl['KillsB']-$rowl['KillsH']-($rowl['Generation']-($deaths) - 1);
 						echo "<tr>
@@ -62,8 +55,8 @@
 							  <td>{$rowl['HeadshotsZ']}</td>
 							  <td>{$rowl['Humanity']}</td>
 							  <td>{$deaths}</td>
-							  <td>{$distanceFoot}</td>
-							  <td>{$duration} Minutes</td>
+							  <td>{$rowl['distanceFoot']}m</td>
+							  <td>".survivalTimeToString($rowl['duration'])."</td>
 							  <td>{$points}</td>
 							  </tr>";
 		                $rank++;

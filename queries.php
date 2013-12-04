@@ -22,7 +22,9 @@ SELECT
 	cd.KillsB,
 	cd.KillsH,
 	cd.HeadshotsZ,
-	cd.Humanity
+	cd.Humanity,
+	cd.distanceFoot,
+	cd.duration
 FROM
 	Character_DATA cd 
 LEFT JOIN
@@ -33,18 +35,6 @@ WHERE
 	InstanceID = " . $iid . "
 AND 
 	Alive like 1
-";
-
-$leaderboard_query_dead = "
-SELECT 
-	cd.distanceFoot,
-	cd.duration
-FROM 
-	Character_DEAD cd
-WHERE
-	InstanceID = " . $iid ." 
-AND 
-	playerUID = ?
 ";
 
 // Search

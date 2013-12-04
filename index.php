@@ -2,6 +2,7 @@
 	session_start();
 	require_once('config.php');
 	require_once('db.php');
+	require_once('functions.php');
 	include('queries.php');
 	//ini_set( "display_errors", 0);
 	error_reporting (E_ALL ^ E_NOTICE);
