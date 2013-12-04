@@ -125,9 +125,7 @@ if (isset($_SESSION['user_id'])) {
 
 ?>	
 
-<body class="stats-bg">
 <div class="container custom-container">
-<div class="content" id="content">
 	
 	<div id="page-heading">
 		<center>

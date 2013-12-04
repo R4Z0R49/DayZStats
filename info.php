@@ -11,7 +11,13 @@ require_once('queries.php');
 				slashes($el[$k]);
 		else $el = stripslashes($el); 
 	}
-
+	
+	if (isset($_REQUEST['search'])){
+		$search = '%'.substr($_REQUEST['search'], 0, 64).'%';
+		$row = $db->GetRow($search_query_player, $search);
+		$CharacterID = $row['CharacterID'];
+		header('location: info.php?view=info&show=1&CharacterID='.$CharacterID.'');
+	}
 	// Start: page-header 
 	include ('modules/stats-header.php');
 	// End page-header

@@ -31,6 +31,8 @@ ON
 	pd.playerUID = cd.PlayerUID
 WHERE
 	InstanceID = " . $iid . "
+AND 
+	Alive like 1
 ";
 
 $leaderboard_query_dead = "
@@ -50,11 +52,12 @@ $search_query_player = "
 SELECT
 	pd.playerName,
 	pd.playerUID,
-	cd.*
+	cd.playerUID,
+	cd.CharacterID
 FROM
-	Player_DATA pd
-JOIN
 	Character_DATA cd
+JOIN
+	Player_DATA pd
 ON
 	cd.PlayerUID = pd.playerUID
 WHERE
