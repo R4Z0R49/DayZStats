@@ -17,44 +17,36 @@ $page = 'home';
 				slashes($el[$k]);
 		else $el = stripslashes($el); 
 	}
-	
-	if (isset($_REQUEST['search'])){
-		$search = '%'.substr($_REQUEST['search'], 0, 64).'%';
-		$row = $db->GetRow($search_query_player, $search);
-		$CharacterID = $row['CharacterID'];
-
-	    if(count($row) != 0) {
-    		header('location: info.php?view=info&show=1&CharacterID='.$CharacterID.'');
-   	    } elseif(count($row) == 0) {
-    		$message->add('danger', 'A player with the name, '. $_REQUEST['search'] . ' can\'t be found!');
-    	}
-	}
-	// Start: page-header 
-	include ('modules/stats-header.php');
-	// End page-header
-
-	if (isset($_GET["show"])) {
-		$show = $_GET["show"];
-	}
-
-	if (isset($_GET['view'])){
-		include ('modules/'.$_GET["view"].'.php');
-	}
-
 ?>
-<div class="container custom-container" style="padding: 10px">
-<?php $message->display(); ?>
-</div>
-</div>
-<!--  end content -->
-</div>
-<!--  end content-outer........................................................END -->
+<!DOCTYPE html>
+<html lang="EN">
+<?php include('modules/stats-header.php'); ?>
+	<div class="container custom-container">
+	<body>
+		<div class="content">
 
-<?php
-	// Start: page-footer 
-	include('modules/footer.php');
-	// End page-footer
-?>
- 
-</body>
+			<?php
+				if (isset($_REQUEST['search'])){
+					$search = '%'.substr($_REQUEST['search'], 0, 64).'%';
+					$row = $db->GetRow($search_query_player, $search);
+					$CharacterID = $row['CharacterID'];
+
+				    if(count($row) != 0) {
+			    		header('location: info.php?view=info&show=1&CharacterID='.$CharacterID.'');
+			   	    } elseif(count($row) == 0) {
+			    		$message->add('danger', 'A player with the name, '. $_REQUEST['search'] . ' can\'t be found!');
+			    	}
+				} elseif(!$_REQUEST['search']){
+					include ('modules/info/1.php');
+				}
+			$message->display();
+			?>
+
+		</div>
+	</div>
+        
+	<?php
+		include('modules/footer.php');
+	?>
+	</body>
 </html>

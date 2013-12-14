@@ -5,25 +5,7 @@
 	$username = "dayz"; //database user
 	$password = "dayz"; //database password
 	$dbName = "dayz"; //database name
-	$sitename = "DayZStats"; //Admin panel name
-		
-	//Social Media
-	$EnableSocialMedia = 1; //Enable social media section (1 yes, 0 no)
-	$socialheader = "Infecting Your Social Media"; // Social Media Header
-	$emailenabled = 1; //Enable media button (1 yes, 0 no)
-	$email = ""; //Contact email
-	$callenabled = 0; //Enable media button (1 yes, 0 no)
-	$call = ""; //Contact us
-	$facebookenabled = 0; //Enable media button (1 yes, 0 no)
-	$facebook = "www.facebook.com"; //Facebook Page
-	$flickrenabled = 0; //Enable media button (1 yes, 0 no)
-	$flickr = ""; //Flickr Page
-	$twitterenabled = 0; //Enable media button (1 yes, 0 no)
-	$twitter = ""; //Twitter Page
-	$vimeoenabled = 0; //Enable media button (1 yes, 0 no)
-	$vimeo = ""; //Vimeo Page
-	$youtubeenabled = 0; //Enable media button (1 yes, 0 no)
-	$youtube = ""; //YouTube 
+	$sitename = "DayZ Stats"; //Admin panel name
 
 	//Top Right Logo - Leave these settings blank to disable the top right logo
 	$rightlogoImg = ""; // Link to a  logo / image

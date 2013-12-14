@@ -6,6 +6,11 @@
 	include('queries.php');
 	//ini_set( "display_errors", 0);
 	error_reporting (E_ALL ^ E_NOTICE);
+
+	include_once('modules/FlashMessages.class.php');
+	$message = new FlashMessages();
+
+	
 	$page == 'home';
 
 	$KillsZ = 0;
@@ -34,6 +39,14 @@
 
 	if(isset($_GET['leaderboard'])) {
 		$page = 'leaderboard';
+	} elseif(isset($_GET['challenge'])){
+		$page = 'challenge';
+	} elseif(isset($_GET['register'])){
+		$page = 'register';
+	} elseif(isset($_GET['login'])) {
+		$page = 'login';
+	} elseif(isset($_GET['options'])) {
+		$page = 'options';
 	} else {
 		$page = 'home';
 	}
@@ -42,11 +55,20 @@
 <html lang="EN">
 <?php include('modules/stats-header.php'); ?>
 	<div class="container custom-container">
+	<body>
 		<div class="content">
 
 			<?php
 				if(isset($_GET['leaderboard'])) {
 					include('modules/leaderboard.php');
+				} elseif(isset($_GET['challenge'])) {
+					include('modules/challenge.php');
+				} elseif(isset($_GET['register'])) {
+					include('modules/register.php');
+				} elseif(isset($_GET['login'])) {
+					include('modules/login.php');
+				} elseif(isset($_GET['options'])) {
+					include('modules/options.php');
 				} else {
 					include('modules/stats.php');
 				}
