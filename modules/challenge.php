@@ -206,11 +206,12 @@
 
 <?php } elseif(isset($_GET['board'])) { 
 
-$rs_name = $db->GetAll("SELECT name FROM dayzstats_boards WHERE id = ?", array($_GET['board']));
+$rs_name = $db->GetAll("SELECT name, owner_userid FROM dayzstats_boards WHERE id = ?", array($_GET['board']));
 foreach($rs_name as $namerow){
 	$board_name = $namerow['name'];
+	$owner_userid = $namerow['owner_userid'];
 }
-$rs_owner_name = $db->GetAll("SELECT login FROM dayzstats WHERE id = ?", $userid);
+$rs_owner_name = $db->GetAll($challenge_owner_name, $owner_userid);
 foreach($rs_owner_name as $onamerow){
 	$owner_name = $onamerow['login']; 
 }

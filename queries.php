@@ -137,4 +137,17 @@ AND
 	pd.playerUID IN($board_pids)
 ";
 
+$challenge_owner_name = "
+SELECT
+	ds.login 
+FROM 
+	dayzstats ds 
+LEFT JOIN 
+	dayzstats_boards db
+ON 
+	ds.id  = db.owner_userid
+WHERE 
+	db.owner_userid = ?
+";
+
 ?>
